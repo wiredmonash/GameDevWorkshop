@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccgwfhjusnqyq"]
+
+[ext_resource type="Texture2D" uid="uid://3y5umw6bfi4v" path="res://wired_mascot_idle.png" id="1_67npj"]
+[ext_resource type="Script" path="res://player.gd" id="1_r1run"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir1gf"]
+size = Vector2(11, 16)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_r1run")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -8)
+shape = SubResource("RectangleShape2D_ir1gf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_67npj")
+offset = Vector2(0, -8)
