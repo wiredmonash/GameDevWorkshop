@@ -19,13 +19,6 @@ texture = ExtResource("2_vru0a")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Sprite2D"]
-texture_filter = 1
-position = Vector2(64, 0)
-texture = ExtResource("2_vru0a")
-centered = false
-metadata/_edit_lock_ = true
-
 [node name="Wall" parent="." instance=ExtResource("3_tbux2")]
 position = Vector2(352, 304)
 
