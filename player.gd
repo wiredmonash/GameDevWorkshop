@@ -8,13 +8,18 @@ func _physics_process(delta):
 	# A force of gravity on the player
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+		
+	# Get inputs
+	var right = Input.is_action_pressed('right')
+	var left = Input.is_action_pressed('left')
+	var jump = Input.is_action_just_pressed('jump')
 	
 	# Jumping
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if jump and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
 	# Movement 
-	var dir = Input.get_axis('left', 'right')
+	var dir = int(right) - int(left)
 	if dir:
 		# Slowing down base on the input
 		velocity.x = dir * SPEED
