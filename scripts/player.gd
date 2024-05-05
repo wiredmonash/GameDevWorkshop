@@ -59,6 +59,7 @@ func _process(_delta):
 
 func decrease_health():
 	health -= 1
+	print('Decreased player health: ' + str(health))
 	if health <= 0:
 		print('YOU DIED')
 		get_tree().reload_current_scene()

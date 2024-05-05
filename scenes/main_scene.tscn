@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqkuqsfki8n1k"]
+[gd_scene load_steps=6 format=3 uid="uid://cqkuqsfki8n1k"]
 
 [ext_resource type="PackedScene" uid="uid://ccgwfhjusnqyq" path="res://scenes/player.tscn" id="1_cn6qf"]
 [ext_resource type="Texture2D" uid="uid://bnx3a6vg7c0cs" path="res://sprites/background.png" id="2_vru0a"]
 [ext_resource type="PackedScene" uid="uid://btu5xblhpktue" path="res://scenes/wall.tscn" id="3_tbux2"]
 [ext_resource type="PackedScene" uid="uid://coop4vwft48tl" path="res://scenes/medkit.tscn" id="4_ppudr"]
+[ext_resource type="PackedScene" uid="uid://d4gjb2m8fp80h" path="res://scenes/spike.tscn" id="5_k4340"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -65,3 +66,12 @@ position_smoothing_enabled = true
 
 [node name="Medkit" parent="." instance=ExtResource("4_ppudr")]
 position = Vector2(496, 296)
+
+[node name="Spike" parent="." instance=ExtResource("5_k4340")]
+position = Vector2(472, 304)
+
+[node name="Spike2" parent="." instance=ExtResource("5_k4340")]
+position = Vector2(448, 304)
+
+[node name="Spike3" parent="." instance=ExtResource("5_k4340")]
+position = Vector2(520, 304)
