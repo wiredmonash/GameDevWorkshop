@@ -17,3 +17,5 @@ shape = SubResource("RectangleShape2D_ir1gf")
 texture_filter = 1
 texture = ExtResource("1_67npj")
 offset = Vector2(0, -8)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

@@ -5,6 +5,11 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -350.0
 
 @onready var sprite = $Sprite2D
+@onready var stream_player = $AudioStreamPlayer2D
+
+@onready var powerup_snd = load('res://sounds/powerup.wav')
+@onready var ouch_snd = load('res://sounds/ouch.mp3')
+@onready var death_snd = load('res://sounds/death.mp3')
 
 var health : int = 3
 var max_health : int = health
@@ -60,11 +65,18 @@ func _process(_delta):
 func decrease_health():
 	health -= 1
 	print('Decreased player health: ' + str(health))
+	stream_player.stream = ouch_snd
+	stream_player.play()
 	if health <= 0:
 		print('YOU DIED')
+		stream_player.stream = death_snd
+		stream_player.play()
+		await stream_player.finished
 		get_tree().reload_current_scene()
 
 func increase_health():
 	health += 1
 	if health > 3: health = 3
+	stream_player.stream = powerup_snd
+	stream_player.play()
 	print('Increased player health: ' + str(health))
