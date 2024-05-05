@@ -1,10 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccgwfhjusnqyq"]
+[gd_scene load_steps=10 format=3 uid="uid://ccgwfhjusnqyq"]
 
-[ext_resource type="Texture2D" uid="uid://3y5umw6bfi4v" path="res://wired_mascot_idle.png" id="1_67npj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_r1run"]
+[ext_resource type="Texture2D" uid="uid://bad30nma3n5rr" path="res://sprites/player_idle.png" id="2_d8ty3"]
+[ext_resource type="Texture2D" uid="uid://c0ikh7ylg81gv" path="res://sprites/player_run.png" id="3_3c8ye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir1gf"]
 size = Vector2(11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh3r5"]
+atlas = ExtResource("3_3c8ye")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3numk"]
+atlas = ExtResource("3_3c8ye")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7re4"]
+atlas = ExtResource("3_3c8ye")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85gny"]
+atlas = ExtResource("3_3c8ye")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oi7lx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d8ty3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh3r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3numk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7re4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85gny")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_r1run")
@@ -13,9 +58,10 @@ script = ExtResource("1_r1run")
 position = Vector2(-0.5, -6)
 shape = SubResource("RectangleShape2D_ir1gf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_67npj")
+sprite_frames = SubResource("SpriteFrames_oi7lx")
+animation = &"run"
 offset = Vector2(0, -8)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

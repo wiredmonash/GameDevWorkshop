@@ -4,7 +4,7 @@ const GRAVITY = 980.0
 const SPEED = 100.0
 const JUMP_VELOCITY = -350.0
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D 
 @onready var stream_player = $AudioStreamPlayer2D
 
 @onready var powerup_snd = load('res://sounds/powerup.wav')
@@ -44,9 +44,11 @@ func _physics_process(delta):
 	if dir:
 		# Adding velocity with direction and speed
 		velocity.x = dir * SPEED
+		sprite.play('run')
 	else:
 		# Slowing down if there is no input
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		sprite.play('idle')
 	
 	# Sprite flipping
 	if Input.is_action_just_pressed('right'): sprite.flip_h = false
