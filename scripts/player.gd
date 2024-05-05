@@ -62,7 +62,11 @@ func _process(_delta):
 	This function is called by the engine every frame (dependent
 	on your machine).
 	"""
-	pass
+	if Input.is_action_just_pressed('close_game'):
+		get_tree().quit()
+		
+	if Input.is_action_just_pressed('restart_game'):
+		get_tree().reload_current_scene()
 
 func decrease_health():
 	health -= 1
