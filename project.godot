@@ -12,9 +12,9 @@ config_version=5
 
 config/name="wired-platformer"
 config/description="A game made for the Week 10 WIRED Workshop"
-run/main_scene="res://main_scene.tscn"
+run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.jpg"
+config/icon="res://sprites/icon.jpg"
 
 [input]
 

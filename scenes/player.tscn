@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccgwfhjusnqyq"]
 
 [ext_resource type="Texture2D" uid="uid://3y5umw6bfi4v" path="res://wired_mascot_idle.png" id="1_67npj"]
-[ext_resource type="Script" path="res://player.gd" id="1_r1run"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_r1run"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir1gf"]
 size = Vector2(11, 12)
