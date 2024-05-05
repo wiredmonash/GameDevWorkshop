@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://coop4vwft48tl"]
+
+[ext_resource type="Texture2D" uid="uid://q3c6spo58n2c" path="res://sprites/medkit.png" id="1_b5lrh"]
+[ext_resource type="Script" path="res://scripts/medkit.gd" id="1_jlm2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggssf"]
+size = Vector2(11, 8)
+
+[node name="Medkit" type="Area2D"]
+script = ExtResource("1_jlm2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ggssf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_b5lrh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

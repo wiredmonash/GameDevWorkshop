@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqkuqsfki8n1k"]
+[gd_scene load_steps=5 format=3 uid="uid://cqkuqsfki8n1k"]
 
 [ext_resource type="PackedScene" uid="uid://ccgwfhjusnqyq" path="res://scenes/player.tscn" id="1_cn6qf"]
 [ext_resource type="Texture2D" uid="uid://bnx3a6vg7c0cs" path="res://sprites/background.png" id="2_vru0a"]
 [ext_resource type="PackedScene" uid="uid://btu5xblhpktue" path="res://scenes/wall.tscn" id="3_tbux2"]
+[ext_resource type="PackedScene" uid="uid://coop4vwft48tl" path="res://scenes/medkit.tscn" id="4_ppudr"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -25,16 +26,34 @@ position = Vector2(352, 304)
 [node name="Wall" parent="Wall" instance=ExtResource("3_tbux2")]
 position = Vector2(16, 0)
 
-[node name="Wall" parent="Wall/Wall" instance=ExtResource("3_tbux2")]
+[node name="Wall2" parent="Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(32, 0)
+
+[node name="Wall" parent="Wall/Wall2" instance=ExtResource("3_tbux2")]
 position = Vector2(16, 0)
 
-[node name="Wall" parent="Wall/Wall/Wall" instance=ExtResource("3_tbux2")]
+[node name="Wall" parent="Wall/Wall2/Wall" instance=ExtResource("3_tbux2")]
 position = Vector2(16, 0)
 
-[node name="Wall" parent="Wall/Wall/Wall/Wall" instance=ExtResource("3_tbux2")]
+[node name="Wall" parent="Wall/Wall2/Wall/Wall" instance=ExtResource("3_tbux2")]
 position = Vector2(16, 0)
 
-[node name="Wall" parent="Wall/Wall/Wall/Wall/Wall" instance=ExtResource("3_tbux2")]
+[node name="Wall2" parent="." instance=ExtResource("3_tbux2")]
+position = Vector2(448, 304)
+
+[node name="Wall" parent="Wall2" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall2/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall2/Wall/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall2/Wall/Wall/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall2/Wall/Wall/Wall/Wall" instance=ExtResource("3_tbux2")]
 position = Vector2(16, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_cn6qf")]
@@ -43,3 +62,6 @@ position = Vector2(400, 272)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 position_smoothing_enabled = true
+
+[node name="Medkit" parent="." instance=ExtResource("4_ppudr")]
+position = Vector2(496, 296)
