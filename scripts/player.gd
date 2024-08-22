@@ -10,7 +10,9 @@ const JUMP_VELOCITY = -350.0
 @onready var powerup_snd = load('res://sounds/powerup.wav')
 @onready var ouch_snd = load('res://sounds/ouch.mp3')
 @onready var death_snd = load('res://sounds/death.mp3')
+@onready var coin_snd = load('res://sounds/coin.wav')
 
+var coin_count: int = 0
 var health : int = 3
 var max_health : int = health
 
@@ -86,3 +88,9 @@ func increase_health():
 	stream_player.stream = powerup_snd
 	stream_player.play()
 	print('Increased player health: ' + str(health))
+
+func increase_coin_count():
+	coin_count += 1
+	stream_player.stream = coin_snd
+	stream_player.play()
+	$"../HUD".update_coin_count(coin_count)

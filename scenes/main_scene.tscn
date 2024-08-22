@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqkuqsfki8n1k"]
+[gd_scene load_steps=10 format=3 uid="uid://cqkuqsfki8n1k"]
 
 [ext_resource type="PackedScene" uid="uid://ccgwfhjusnqyq" path="res://scenes/player.tscn" id="1_cn6qf"]
+[ext_resource type="Script" path="res://scenes/main_scene.gd" id="1_v7fam"]
 [ext_resource type="Texture2D" uid="uid://bnx3a6vg7c0cs" path="res://sprites/background.png" id="2_vru0a"]
 [ext_resource type="PackedScene" uid="uid://btu5xblhpktue" path="res://scenes/wall.tscn" id="3_tbux2"]
 [ext_resource type="PackedScene" uid="uid://coop4vwft48tl" path="res://scenes/medkit.tscn" id="4_ppudr"]
 [ext_resource type="PackedScene" uid="uid://d4gjb2m8fp80h" path="res://scenes/spike.tscn" id="5_k4340"]
+[ext_resource type="PackedScene" uid="uid://cma6erfsmsaw2" path="res://scenes/enemy.tscn" id="6_dxg17"]
+[ext_resource type="PackedScene" uid="uid://covc3ennhgnqx" path="res://scenes/coin.tscn" id="7_j7axk"]
+[ext_resource type="PackedScene" uid="uid://2qatyh1xpmac" path="res://ui/hud.tscn" id="9_4kswp"]
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_v7fam")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -37,6 +42,60 @@ position = Vector2(16, 0)
 position = Vector2(16, 0)
 
 [node name="Wall" parent="Wall/Wall2/Wall/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall3" parent="." instance=ExtResource("3_tbux2")]
+position = Vector2(544, 304)
+
+[node name="Wall" parent="Wall3" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall2" parent="Wall3" instance=ExtResource("3_tbux2")]
+position = Vector2(32, 0)
+
+[node name="Wall" parent="Wall3/Wall2" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall3/Wall2/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall3/Wall2/Wall/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall4" parent="." instance=ExtResource("3_tbux2")]
+position = Vector2(640, 304)
+
+[node name="Wall" parent="Wall4" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall2" parent="Wall4" instance=ExtResource("3_tbux2")]
+position = Vector2(32, 0)
+
+[node name="Wall" parent="Wall4/Wall2" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall4/Wall2/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall4/Wall2/Wall/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall5" parent="." instance=ExtResource("3_tbux2")]
+position = Vector2(736, 304)
+
+[node name="Wall" parent="Wall5" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall2" parent="Wall5" instance=ExtResource("3_tbux2")]
+position = Vector2(32, 0)
+
+[node name="Wall" parent="Wall5/Wall2" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall5/Wall2/Wall" instance=ExtResource("3_tbux2")]
+position = Vector2(16, 0)
+
+[node name="Wall" parent="Wall5/Wall2/Wall/Wall" instance=ExtResource("3_tbux2")]
 position = Vector2(16, 0)
 
 [node name="Wall2" parent="." instance=ExtResource("3_tbux2")]
@@ -75,3 +134,18 @@ position = Vector2(448, 304)
 
 [node name="Spike3" parent="." instance=ExtResource("5_k4340")]
 position = Vector2(520, 304)
+
+[node name="Enemy" parent="." instance=ExtResource("6_dxg17")]
+position = Vector2(614, 288)
+move_speed = 50.0
+patrol_point_a = Vector2(600, 280)
+patrol_point_b = Vector2(700, 280)
+tolerance = 1.0
+
+[node name="Coin" parent="." instance=ExtResource("7_j7axk")]
+position = Vector2(726, 288)
+
+[node name="HUD" parent="." instance=ExtResource("9_4kswp")]
+
+[connection signal="body_entered" from="Enemy" to="Enemy" method="_on_body_entered"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

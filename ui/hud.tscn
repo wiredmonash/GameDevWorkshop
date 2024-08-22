@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://2qatyh1xpmac"]
+
+[ext_resource type="LabelSettings" uid="uid://ct27i6xmoqttd" path="res://ui/label.tres" id="1_aimk0"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_w86wl"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_w86wl")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "WIRED Platformer
+"
+label_settings = ExtResource("1_aimk0")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_constants/margin_right = 20
+
+[node name="CoinCount" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("1_aimk0")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -114.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="MarginContainer2"]
+layout_mode = 2
+text = "START"
+
+[connection signal="pressed" from="MarginContainer2/StartButton" to="." method="_on_start_button_pressed"]
